@@ -6,11 +6,12 @@
 </head>
 <body>
 <button id="btn">这是一个按钮</button>
+<p>123</p>
 <script>
     var btn = document.getElementById('btn');
     btn.onclick = function () {
-        alert('it is ok')
-    };
+        alert(btn.innerHTML)
+    }
 </script>
 </body>
 </html>

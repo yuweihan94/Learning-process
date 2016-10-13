@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul, ol {
+            list-style: none;
+        }
+
+        #contain {
+            margin: 50px auto;
+            width: 400px;
+            height: 200px;
+            background: #cccccc;
+        }
+
+        #nav li {
+            float: left;
+            width: 100px;
+            height: 30px;
+            margin-right: 5px;
+            background: #eeeeee;
+        }
+
+        #nav {
+            height: 30px;
+        }
+
+        #content .selected2 {
+            display: block;
+        }
+
+        #content div {
+            display: none;
+            height: 170px;
+            border-top: solid 1px black;
+        }
+
+        #nav .selected1 {
+            background: #000;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div id="contain">
+    <ul id="nav">
+        <li class="selected1">js</li>
+        <li>html</li>
+        <li>css</li>
+    </ul>
+    <div id="content">
+        <div class="selected2">one</div>
+        <div>two</div>
+        <div>three</div>
+    </div>
+</div>
+<script>
+    var oNav = document.getElementById('nav');
+    var aLi = oNav.getElementsByTagName('li');
+    var oDiv = document.getElementById('content');
+    var aDiv = oDiv.getElementsByTagName('div');
+    for (i = 0; i < aLi.length; i++) {
+        aLi[i].index = i;
+        aLi[i].onclick = function () {
+            for (i = 0; i < aLi.length; i++) {
+                aLi[i].className = '';
+                aDiv[i].className = '';
+            }
+            this.className = 'selected1';
+            aDiv[this.index].className = 'selected2'
+        }
+    }
+</script>
+</body>
+</html>

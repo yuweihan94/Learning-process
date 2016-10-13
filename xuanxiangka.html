@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡设计</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,ol{
+            list-style: none;
+        }
+        #contain{
+            height: 300px;
+            width: 400px;
+            margin: 50px auto;
+        }
+        #nav{
+            height: 30px;
+
+
+        }
+        #nav li{
+            float: left;
+            margin-right: 10px;
+            height: 30px;
+            width: 100px;
+            text-align: center;
+            line-height: 30px;
+            background: #cccccc;
+        }
+        #content{
+            width: 400px;
+            height: 270px;
+            background: #eeeeee;
+            border: solid 1px black;
+        }
+        #nav .selected{
+            background: #000;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div id="contain">
+        <ul id="nav">
+            <li class="selected">js</li>
+            <li>html</li>
+            <li>css</li>
+        </ul>
+        <div id="content">
+            23
+        </div>
+    </div>
+    <script>
+        var oNav = document.getElementById('nav');
+        var aLi = oNav.getElementsByTagName('li');
+        var data = [111111,22324,555555];
+        var oContent = document.getElementById('content');
+        for(i=0; i<aLi.length; i++){
+            aLi[i].index = i;
+            aLi[i].onclick = function(){
+                oContent.innerHTML = data[this.index];
+                for(i=0; i<aLi.length; i++){
+                    aLi[i].className = ''
+                }
+                this.className = 'selected'
+            }
+
+        }
+    </script>
+</body>
+</html>
