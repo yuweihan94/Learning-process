@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>滚动图</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #container{
+            width: 400px;
+            height: 200px;
+            background: #cccccc;
+            margin: 100px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        #content li{
+            float: left;
+            width: 120px;
+            height: 120px;
+            background: #000000;
+            margin-right: 20px;
+            color: white;
+            text-align: center;
+            line-height: 120px;
+        }
+        #content{
+            width: 1120px;
+            height: 120px;
+            position: absolute;
+            top: 0;
+            left: 0px;
+        }
+        #btn{
+            position: absolute;
+            bottom: 20px;
+            background: #eeeeee;
+        }
+        span{
+            float: left;
+            width: 100px;
+            height: 20px;
+            text-align: center;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+
+            <ul id="content">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+            </ul>
+
+        <div id="btn">
+            <span id="prev">&lt;&lt;向左</span>
+            <span id="next">向右&gt;&gt;</span>
+        </div>
+    </div>
+    <script src="jslib.js"></script>
+    <script>
+        var oContainer = document.getElementById('container');
+        var oContent = document.getElementById('content');
+        var oBtn = document.getElementById('btn');
+        var aLi = oContainer.getElementsByTagName('li');
+        var oPrev = document.getElementById('prev');
+        var oNext = document.getElementById('next');
+        var  time1;
+        oPrev.onclick = function(){
+            clearInterval(timer);
+            clearInterval(time);
+            clearInterval(time1);
+            oContent.style.left = 0;
+             timer1 = setInterval(function(){
+                oContent.style.left = oContent.offsetLeft -2 +"px";
+                if(oContent.style.left == -oContent.offsetWidth /2 + 'px'){
+                    oContent.style.left = 0
+                };
+            }, 40);
+        };
+        var time;
+        oNext.onclick = function () {
+            clearInterval(timer);
+            clearInterval(time);
+            clearInterval(time1);
+            oContent.style.left = -oContent.offsetWidth /2 + 'px';
+            time = setInterval(function(){
+                oContent.style.left = oContent.offsetLeft +2 +"px";
+                if(oContent.offsetLeft == 0){
+                    oContent.style.left = -oContent.offsetWidth /2 + 'px';
+                }
+            },40);
+        };
+        var timer = setInterval(function(){
+           oContent.style.left = oContent.offsetLeft -2 +"px";
+            if(oContent.style.left == -oContent.offsetWidth /2 + 'px'){
+                oContent.style.left = 0
+            };
+        }, 40);
+    </script>
+</body>
+</html>

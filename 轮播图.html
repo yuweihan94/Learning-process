@@ -1,130 +1,143 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
+<!doctype html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <title>轮播图</title>
     <style>
-        * {
+        *{
             padding: 0;
             margin: 0;
         }
-
-        ul {
+        ul{
             list-style: none;
-        }
 
-        #nav li, #nav1 li {
+        }
+        #nav li,#tab li{
             float: left;
             width: 20px;
             height: 20px;
-            text-align: center;
-            line-height: 20px;
             margin-right: 10px;
             background: #000;
             color: #ffffff;
-            cursor: pointer;
+            text-align: center;
+            line-height: 20px;
         }
-
-        #contain {
+        #contain{
             width: 680px;
             height: 344px;
             margin: 100px auto;
             position: relative;
-            /*background-image: url("img/1.jpg");*/
-        }
 
+        }
+        #tab{
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+        }
         #nav {
             position: absolute;
-            bottom: 15px;
-            right: 15px;
+            bottom: 20px;
+            left: 20px;
         }
-
-        #nav1 {
-            position: absolute;
-            bottom: 15px;
-            left: 15px;
+        img{
+            display: none;
         }
-
-        #nav .selected {
-            background: #ffffff;
-            color: black;
-        }
-
-        .selected1 {
+        .selected{
             display: block;
         }
-
-        img {
-            display: none;
+        #tab .selected1{
+            background: #cccccc;
+            color: black;
         }
     </style>
 </head>
 <body>
 <div id="contain">
+    <div id="tab">
+        <ul>
+            <li class="selected1">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
     <ul id="nav">
-        <li class="selected">1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-    </ul>
-    <ul id="nav1">
         <li id="history">&lt;</li>
         <li id="next">&gt;</li>
     </ul>
-    <img src="img/1.jpg" alt="1" class="selected1"/>
-    <img src="img/2.jpg" alt="1"/>
-    <img src="img/3.jpg" alt="1"/>
-    <img src="img/4.jpg" alt="1"/>
-</div>
-<script>
-    var oNav = document.getElementById('nav');
-    var aLi = oNav.getElementsByTagName('li');
-    var oDiv = document.getElementById('contain');
-    var aImg = oDiv.getElementsByTagName('img');
-    var oHistory = document.getElementById('history');
-    var oNext = document.getElementById('next');
-    var iNow = 0;
-    for (i = 0; i < aLi.length; i++) {
-        aLi[i].index = i;
-        aLi[i].onmouseover = function () {
-            for (i = 0; i < aLi.length; i++) {
-                aLi[i].className = '';
-                aImg[i].className = ''
-            }
-            this.className = 'selected';
-            aImg[this.index].className = 'selected1';
-        };
-    }
-    oNext.onclick = function () {
-        iNow = iNow + 1;
-        if (iNow == 4) {
-            iNow = 0
-        }
-        for (i = 0; i < aLi.length; i++) {
-            aLi[i].index = i;
-                for (i = 0; i < aLi.length; i++) {
-                    aLi[i].className = '';
-                    aImg[i].className = '';
-                }
-                aLi[iNow].className = 'selected';
-                aImg[iNow].className = 'selected1';
-        }
-    };
-    oHistory.onclick = function(){
-        iNow = iNow - 1;
-        if(iNow== -1){
-            iNow = 3
-        }
-        for (i = 0; i < aLi.length; i++) {
-            aLi[i].index = i;
+    <img src="img/1.jpg" alt="" class="selected"/>
+    <img src="img/2.jpg" alt=""/>
+    <img src="img/3.jpg" alt=""/>
+    <img src="img/4.jpg" alt=""/>
+    <script>
+        var oTab = document.getElementById('tab');
+        var aLi = oTab.getElementsByTagName('li');
+        var oDiv = document.getElementById('contain');
+        var aImg = oDiv.getElementsByTagName('img');
+        var iNow = 0;
+        var oHistory = document.getElementById('history');
+        var oNext = document.getElementById('next');
+        function circle(ind){
+
             for (i = 0; i < aLi.length; i++) {
                 aLi[i].className = '';
                 aImg[i].className = '';
             }
-            aLi[iNow].className = 'selected';
-            aImg[iNow].className = 'selected1';
+            aLi[ind].className = 'selected1';
+            aImg[ind].className = 'selected';
+
         }
-    }
-</script>
-</body>
-</html>
+        for(i=0; i<aLi.length; i++){
+            aLi[i].index = i;
+            aLi[i].onmousemove = function(){
+                circle(this.index);
+                iNow = this.index
+            }
+        }
+        oNext.onclick = function(){
+            iNow = iNow + 1 ;
+            if(iNow == aLi.length){
+                iNow = 0
+            }
+            circle(iNow)
+        }
+        oHistory.onclick = function(){
+            iNow = iNow - 1;
+            if(iNow == -1){
+                iNow = 3
+            }
+            circle(iNow)
+        }
+        function timer(){
+            time = setInterval(function(){oNext.onclick()},2000)
+        }
+        oDiv.onmouseover= function(){clearInterval(time)};
+        oDiv.onmouseout = function(){
+            timer()
+        };
+        timer();
+     /*  var oTab = document.getElementById('tab');
+       var aLi = oTab.getElementsByTagName('li');
+       var oDiv = document.getElementById('contain');
+       var aImg = oDiv.getElementsByTagName('img');
+       var oHistory = document.getElementById('history');
+       var oNext = document.getElementById('next');
+       var iNow = 0;
+       function circle(ind){
+
+           for (i = 0; i < aLi.length; i++) {
+               aLi[i].className = '';
+               aImg[i].className = '';
+           }
+           aLi[ind].className = 'selected1';
+           aImg[ind].className = 'selected';
+
+       }
+       for(i=0; i<aLi.length; i++){
+           aLi[i].index = i;
+           aLi[i].onmouseover = function(){
+               circle(this.index);
+               iNow = this.index
+           };
+       }*/
+    </script>

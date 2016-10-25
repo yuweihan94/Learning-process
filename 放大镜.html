@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>放大镜</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        img{
+            border: 0;
+        }
+        #small-img{
+            width: 400px;
+            height: 400px;
+            position: relative;
+            float: left;
+        }
+        #drag{
+            width: 200px;
+            height: 200px;
+            background: #cccccc;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: .5;
+            filter: alpha(opacity=50);
+            display: none;
+        }
+        #big-img{
+            width: 400px;
+            height: 400px;
+            float: left;
+            overflow: hidden;
+            position: relative;
+            display: none;
+        }
+        #big-pic{
+            position: absolute;
+        }
+        #mask{
+            width: 400px;
+            height: 400px;
+            background: #ff0000;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="small-img">
+        <div id="drag"></div>
+        <img src="1.jpg" alt="1"/>
+        <div id="mask"></div>
+    </div>
+    <div id="big-img">
+        <img src="2.jpg" alt="s" id="big-pic"/>
+    </div>
+    <script>
+        var oSmallImg = document.getElementById('small-img');
+        var oDrag = document.getElementById('drag');
+        var oBigPic = document.getElementById('big-pic');
+        var oBigImg = document.getElementById('big-img');
+        var oMask = document.getElementById('mask');
+        oMask.onmouseover = function(){
+            oBigImg.style.display = 'block';
+            oDrag.style.display = 'block';
+        };
+        oMask.onmousemove = function(e){
+         /*   e = e ||window.event;
+            var iDisX = e.clientX - oDrag.offsetLeft / 2 ;
+            var iDisY = e.clientY - oDrag.offsetTop / 2 ;
+            oDrag.style.left = e.clientX -iDisX + 'px';
+            oDrag.style.top = e.clientY - iDisY + 'px';*/
+            e = e || window.event;
+            var iLeft = e.clientX - oDrag.offsetWidth / 2;
+            var iTop = e.clientY - oDrag.offsetHeight / 2;
+            if(iTop < 0){
+                iTop = 0;
+            }
+            if(iTop > oSmallImg.offsetHeight - oDrag.offsetHeight){
+                iTop = oSmallImg.offsetHeight - oDrag.offsetHeight;
+            }
+            if(iLeft < 0){
+                iLeft = 0;
+            }
+            if(iLeft > oSmallImg.offsetWidth - oDrag.offsetWidth){
+                iLeft = oSmallImg.offsetWidth - oDrag.offsetWidth;
+            }
+            oDrag.style.left = iLeft + "px";
+            oDrag.style.top = iTop + "px";
+            var fScaleX = iLeft / (oSmallImg.offsetWidth - oDrag.offsetWidth);
+            var fScaleY = iTop / (oSmallImg.offsetHeight - oDrag.offsetHeight);
+            oBigPic.style.top = -(oBigPic.offsetHeight - oBigImg.offsetHeight) * fScaleY + "px";
+            oBigPic.style.left = -(oBigPic.offsetWidth - oBigImg.offsetWidth) * fScaleX + "px";
+
+        };
+        oMask.onmouseout = function(){
+            oDrag.style.display = "none";
+            oBigImg.style.display = "none";
+        };
+    </script>
+</body>
+</html>

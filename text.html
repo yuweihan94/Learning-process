@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项框</title>
+</head>
+<body>
+<form method="post" action="">
+    你爱好的运动是？
+    <br/>
+    <input type="checkbox" name="items" value="足球"/>足球
+    <input type="checkbox" name="items" value="篮球"/>篮球
+    <input type="checkbox" name="items" value="羽毛球"/>羽毛球
+    <input type="checkbox" name="items" value="乒乓球"/>乒乓球
+    <br/>
+    <input type="button" id="checkedAll" value="全　选"/>
+    <input type="button" id="checkedNo" value="全不选"/>
+    <input type="button" id="checkedRev" value="反　选"/>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function(){
+            $('#checkedAll').on('click',function(){
+                $('input[name]').prop('checked',true)
+            });
+            $('#checkedNo').on('click',function(){
+                $('input[name]').prop('checked',false)
+            });
+        })
+    </script>
+</form>
+</body>
+</html>

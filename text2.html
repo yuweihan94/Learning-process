@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        div{
+            height: 1000px;
+            width: 1360px;
+            position: relative;
+        }
+        img{
+            float: left;
+        }
+        #pic1{
+            position: absolute;
+        }
+        #pic2{
+            position: absolute;
+        }
+        button{
+            margin: 400px auto;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <img src="img/2.jpg" alt="" id="pic1" class="selected"/>
+    <img src="img/3.jpg" alt="" id="pic2"/>
+    <button id="btn">切换图片</button>
+</div>
+    <script>
+        var oBtn = document.getElementById('btn');
+        var oPic2 = document.getElementById('pic2');
+        var oPic1 = document.getElementById('pic1');
+        oBtn.onmouseover = function(){
+            oPic2.style.display = 'none';
+        };
+        oBtn.onmouseout = function(){
+            oPic2.style.display = 'block'
+        }
+    </script>
+</body>
+</html>

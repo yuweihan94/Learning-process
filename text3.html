@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>轮播图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            border: 0;
+        }
+
+        #container {
+            width: 680px;
+            height: 344px;
+            margin: 80px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #content{
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        #content img{
+            float: left;
+            /*width: 680px;*/
+        }
+
+        #tab {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+
+        #tab li {
+            width: 20px;
+            height: 20px;
+            float: left;
+            background: #000000;
+            color: #ffffff;
+            margin-right: 5px;
+            text-align: center;
+            line-height: 20px;
+            cursor: pointer;
+        }
+
+        #tab li.selected {
+            background: #ffff00;
+            color: #000000;
+        }
+
+        #arrow {
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+        }
+
+        #arrow span {
+            float: left;
+            width: 20px;
+            height: 20px;
+            background: #000;
+            color: #fff;
+            margin-right: 5px;
+            text-align: center;
+            line-height: 20px;
+            cursor: pointer;
+        }
+        #arrow span:hover{
+            background: #ffff00;
+            color: #000000;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="content">
+        <img src="img/1.jpg" alt="" class="selected"/>
+        <img src="img/2.jpg" alt=""/>
+        <img src="img/3.jpg" alt=""/>
+        <img src="img/4.jpg" alt=""/>
+        <img src="img/1.jpg" alt=""/>
+    </div>
+    <ul id="tab">
+        <li class="selected">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li style="margin-right: 0">4</li>
+    </ul>
+    <div id="arrow">
+        <span id="prev">&lt</span>
+        <span id="next" style="margin-right: 0">&gt</span>
+    </div>
+</div>
+<script>
+
+    window.onload= function(){
+        var oTab = document.getElementById('tab');
+        var aLi = oTab.getElementsByTagName('li');
+        var oContent = document.getElementById('content');
+        var aImg = oContent.getElementsByTagName('img');
+        var oPrev = document.getElementById('prev');
+        var oNext = document.getElementById('next');
+        var oContainer = document.getElementById('container');
+        oContent.style.width = aImg[0].offsetWidth * aImg.length + "px";
+
+        var iNow = 0;
+        var timer;
+        for (var i = 0; i < aLi.length; i++) {
+            aLi[i].index = i;
+            aLi[i].onmouseover = function () {
+                iNow = this.index;
+                changeImg(iNow);
+            };
+        }
+        oNext.onclick = function () {
+            iNow++;
+            if (iNow == aImg.length) {
+                iNow = 0;
+            }
+
+            changeImg(iNow);
+        };
+        oPrev.onclick = function () {
+            iNow--;
+            if (iNow == -1) {
+                iNow = aLi.length-1;
+            }
+
+            changeImg(iNow);
+        };
+        function changeImg(index) {
+            for (var i = 0; i < aLi.length; i++) {
+                aLi[i].className = "";
+            }
+            var newIndex = index;
+            if(index == 4){
+                index = 0;
+                iNow = 0;
+            }
+            aLi[index].className = "selected";
+
+            /*oContent.style.left = -index * aImg[0].offsetWidth + "px";*/
+            /*oContent.style.height = aImg[0].offsetHeight + "px";*/
+            animate(oContent,{left:-newIndex * aImg[0].offsetWidth},function(){
+                if(newIndex == 4){
+                    oContent.style.left =0;
+                }
+            });
+
+        }
+
+        timer = setInterval(function(){
+            oNext.onclick();
+        },2000);
+        oContainer.onmouseover = function(){
+            clearInterval(timer);
+        };
+        oContainer.onmouseout = function(){
+            timer = setInterval(function(){
+
+                oNext.onclick();
+            },2000);
+        };
+
+        function animate(elem, attr, callback){
+            clearInterval(elem.timer);
+            elem.timer = setInterval(function(){
+                var bStop = true;//一个标识位，true代表可以停止定时器，false代表不可不停止
+                for(var prop in attr){//1:width
+                    var curr = parseInt(getStyle(elem, prop));
+                    if(prop == 'opacity'){
+                        curr = parseInt(getStyle(elem, prop)*100);
+                    }
+                    var speed = (attr[prop] -  curr) / 8;
+                    speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+                    if(curr != attr[prop]){
+                        bStop = false;
+                    }
+
+                    if(prop == 'opacity'){
+                        elem.style.opacity = (curr + speed) / 100;
+                        elem.style.filter = 'alpha(opacity='+(curr + speed)+')';
+                    }else{
+                        elem.style[prop] = curr + speed + 'px';
+                    }
+                }
+                if(bStop){
+                    clearInterval(elem.timer);
+                    callback && callback();
+                }
+            }, 30);
+        }
+
+        function getStyle(elem, attr){
+            if(elem.currentStyle){//IE
+                return elem.currentStyle[attr];
+            }else{
+                return getComputedStyle(elem, false)[attr];
+            }
+        }
+
+
+    }
+
+</script>
+</body>
+</html>
