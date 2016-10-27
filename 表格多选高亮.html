@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        table{
+            border: 0px;
+            border-collapse:collapse;
+        }
+        thead{
+            border-bottom: 2px solid black;
+        }
+        td{
+            width: 100px;
+            text-align: center;
+        }
+        .selected{
+            background: red;
+        }
+        .odd{
+            background: #0FD55C;
+        }
+        .even{
+            background: #ffc73d;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <thead>
+    <tr><th>选项</th><th>姓名</th><th>性别</th><th>暂住地</th></tr>
+    </thead>
+    <tbody>
+    <tr><td><input type="checkbox" name="check"/></td><td>张三</td><td>男</td><td>浙江宁波</td></tr>
+    <tr><td><input type="checkbox" name="check"/></td><td>李四</td><td>男</td><td>浙江杭州</td></tr>
+    <tr><td><input type="checkbox" name="check"/></td><td>李四</td><td>男</td><td>浙江杭州</td></tr>
+    <tr><td><input type="checkbox" name="check"/></td><td>李四</td><td>男</td><td>浙江杭州</td></tr>
+    <tr><td><input type="checkbox" name="check"/></td><td>george</td><td>男</td><td>浙江杭州</td></tr>
+    <tr><td><input type="checkbox" name="check"/></td><td>mike</td><td>男</td><td>浙江杭州</td></tr>
+    </tbody>
+</table>
+<script src="jquery-1.12.4.js"></script>
+<script>
+    $(function(){
+        $('tbody>tr').on('click',function() {
+            if(this.className == ''){
+                $(this).addClass('selected');
+            }else{
+                $(this).removeClass('selected')
+            }
+        });
+    })
+</script>
+</body>
+</html>

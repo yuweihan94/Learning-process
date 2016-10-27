@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        input{
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="放大" id="big"/>
+    <input type="button" value="缩小" id="small"/>
+    <textarea name="" id="txt" cols="30" rows="10">多行文本框高度变化.多行文本框高度变化.多行文本框高度变化.多行文本框高度变化.多行文本框高度变化.多行文本框高度变化.多行文本框高度变化.多行文本框高度变化.多行文本框高度变化.</textarea>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function(){
+           /* $('#big').on('click',function(){
+                $('#txt').height($('#txt').height()+50);
+                console.log($('#txt').height())
+            });
+            $('#small').on('click',function(){
+                $('#txt').height($('#txt').height()-50);
+            })*/
+            $('#big').on('click',function(){
+                $('#txt').animate({
+                    height: $('#txt').height()+50
+                },1000)
+            });
+            $('#small').on('click',function(){
+                $('#txt').animate({
+                    height: $('#txt').height()-50
+                },1000)
+            })
+        })
+    </script>
+</body>
+</html>

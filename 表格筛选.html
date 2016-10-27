@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        table{
+            border-collapse: collapse;
+        }
+        th{
+            border-bottom: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <label for="search">筛选：
+        <input type="text" id="search"/>
+    </label>
+    <thead>
+    <tr><th>姓名</th><th>性别</th><th>暂住地</th></tr>
+    </thead>
+    <tbody>
+    <tr><td>张三</td><td>男</td><td>浙江宁波</td></tr>
+    <tr><td>李四</td><td>男</td><td>浙江杭州</td></tr>
+    <tr><td>王5</td><td>男</td><td>浙江绍兴</td></tr>
+    <tr><td>赵6</td><td>男</td><td>浙江金华</td></tr>
+    <tr><td>john</td><td>男</td><td>浙江杭州</td></tr>
+    <tr><td>mike</td><td>男</td><td>浙江杭州</td></tr>
+    </tbody>
+</table>
+<script src="jquery-1.12.4.js"></script>
+<script>
+    $(function(){
+        $('input').on('keyup',function(){
+            $('tbody tr').hide().filter(":contains('"+( $(this).val() )+"')").show()
+        })
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <label for="name">帐号：
+        <input type="text" id="name" value="名称"/>
+    </label>
+    <br/>
+    <label for="password">密码：
+        <input type="password" id="password" value="hh"/>
+    </label>
+    <br/>
+    <label for="txt">个人信息：
+        <textarea name="txt" id="txt" cols="18" rows="2">请输入</textarea>
+    </label>
+    <script src="../jquery-1.12.4.js"></script>
+    <script>
+        $(function(){
+            $('input,textarea').on('focus',function(){
+                $(this).css('background','#fcc');
+                if (this.value == this.defaultValue) {
+                    this.value = '';
+                };
+
+            })
+            $('input,textarea').on('blur',function(){
+                $(this).css('background','#fff');
+                if(this.value == ''){
+                    this.value = this.defaultValue;
+                }
+            })
+
+        })
+    </script>
+</body>
+</html>

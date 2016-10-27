@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        #contain {
+            margin: 50px auto;
+            width: 400px;
+            height: 200px;
+            background: #ffffff;
+            border: solid 1px black;
+        }
+
+        #nav li {
+            float: left;
+            width: 100px;
+            height: 30px;
+            margin-right: 5px;
+            background: #eeeeee;
+            cursor: pointer;
+        }
+
+        #nav {
+            height: 30px;
+        }
+
+        #content .selected2 {
+            display: block;
+        }
+
+        #content div {
+            display: none;
+            height: 170px;
+            border-top: solid 1px black;
+        }
+        #nav li:hover{
+            background: #3c85bd;
+        }
+        #nav .selected1 {
+            background: #0090FF;
+            color: #f3f3f3;
+        }
+    </style>
+</head>
+<body>
+<div id="contain">
+    <ul id="nav">
+        <li class="selected1">时事</li>
+        <li>体育</li>
+        <li>娱乐</li>
+    </ul>
+    <div id="content">
+        <div class="selected2">时事</div>
+        <div>体育</div>
+        <div>娱乐</div>
+    </div>
+</div>
+<script src="jquery-1.12.4.js"></script>
+<script>
+    $(function(){
+        $('li').on('click',function(){
+            $('li').removeClass('selected1');
+            $(this).addClass('selected1');
+            console.log($(this).index());
+            $('#content div:eq('+$(this).index()+')').show();
+            $('#content div:eq('+$(this).index()+')').siblings().hide()
+        })
+
+    })
+</script>
+</body>
+</html>
