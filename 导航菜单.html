@@ -11,6 +11,12 @@
         ul,ol{
             list-style: none;
         }
+        a{
+            text-decoration: none;
+            width: 100px;
+            height: 30px;
+            display: block;
+        }
         #nav>li{
             float: left;
             width: 100px;
@@ -19,6 +25,7 @@
             line-height: 30px;
             background: #0090FF;
             color: black;
+            margin-right: 10px;
         }
         #nav ul li{
             width: 100px;
@@ -34,27 +41,39 @@
 <div id="content">
     <ul id="nav">
         <li>
-            菜单1
-            <ul>
+            <a href="#">菜单1</a>
+            <ul class="submenu">
                 <li>11</li>
                 <li>11</li>
             </ul>
         </li>
         <li>
-            菜单2
-            <ul>
+            <a href="#">菜单2</a>
+            <ul class="submenu">
                 <li>22</li>
                 <li>22</li>
             </ul>
         </li>
         <li>
-            菜单3
-            <ul>
+            <a href="#">菜单3</a>
+            <ul class="submenu">
                 <li>33</li>
                 <li>33</li>
             </ul>
         </li>
     </ul>
 </div>
+<script src="jquery-1.12.4.js"></script>
+<script>
+    $(function(){
+        $('.submenu').css('display','none');
+        $('a').on('mouseover',function(){
+            $(this).siblings().stop().slideDown()
+        });
+        $('a').on('mouseout',function(){
+            $(this).siblings().stop().slideUp()
+        })
+    })
+</script>
 </body>
 </html>

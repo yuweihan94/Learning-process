@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #txt{
+            width: 400px;
+            height: 400px;
+        }
+        span{
+            background: #CCCCCC;
+            width: 40px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="ctrl">
+        <span id="big">放大</span>
+        <span id="small">缩小</span>
+    </div>
+    <div id="txt">
+        <p>This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text.</p>
+    </div>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function(){
+
+            $('#big').on('click',function(){
+                var fsize = $("#txt").css("font-size");
+                var iFsize = parseInt(fsize, 10);
+                console.log(fsize);
+                if(iFsize <25){
+                    $('#txt').css('font-size',iFsize + 2)
+                }else{
+                    $('#txt').css('font-size',"26px")
+                }
+            });
+            $('#small').on('click',function(){
+                var fsize = $("#txt").css("font-size");
+                var iFsize = parseInt(fsize, 10);
+                if(iFsize >16){
+                    $('#txt').css('font-size',iFsize - 2)
+                }else{
+                    $('#txt').css('font-size',"16px")
+                }
+            })
+        })
+    </script>
+</body>
+</html>

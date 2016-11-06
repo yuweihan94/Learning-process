@@ -1,0 +1,371 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+a{
+    text-decoration: none;
+}
+ul,ol{
+    list-style: none;
+}
+/*全局*/
+.warper{
+    width: 990px;
+    height: 105px;
+    margin: 0px auto;
+    position: relative;
+}
+#head{
+    background-image: url(../imgs/headerbg.png);
+}
+#logo{
+    cursor: pointer;
+}
+#nav li{
+    float: left;
+    height: 37px;
+    line-height: 37px;
+    margin-left: 20px;
+    font-size: 12px;
+}
+#nav a{
+    color: #ffffff;
+}
+#navwarp{
+    width: 990px;
+    height: 37px;
+    position: absolute;
+    bottom: 0px;
+}
+#navwarp.skin1,#content h3.skin1{
+    background: #4a4a4a;
+}
+#navwarp.skin6,#content h3.skin6{
+    background: #BE46D8;
+}
+#navwarp.skin5,#content h3.skin5{
+    background: #E44072;
+}
+#navwarp.skin4,#content h3.skin4{
+    background: #37C7D4;
+}
+#navwarp.skin3,#content h3.skin3{
+    background: #F9AF2A;
+}
+#navwarp.skin2,#content h3.skin2{
+    background: #B1D410;
+}
+#skin .skin1{
+    background-image: url(../imgs/theme.gif);
+    background-position: 0px 15px;
+}
+#skin .skin2{
+    background-image: url(../imgs/theme.gif);
+    background-position: -20px 15px;
+}
+#skin .skin3{
+    background-image: url(../imgs/theme.gif);
+    background-position: -40px 15px;
+}
+#skin .skin4{
+    background-image: url(../imgs/theme.gif);
+    background-position: -60px 15px;
+}
+#skin .skin5{
+    background-image: url(../imgs/theme.gif);
+    background-position: -80px 15px;
+}
+#skin .skin6{
+    background-image: url(../imgs/theme.gif);
+    background-position: -100px 15px;
+}
+#search{
+    position: absolute;
+    top: 20px;
+    left: 200px;
+    color: #999999;
+    font-size: 14px;
+    padding: 3px 6px 5px 6px;
+    border: 1px solid #BABEBF;
+}
+#skin li{
+    float: left;
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+}
+#skin{
+    position: absolute;
+    top: 14px;
+    right: 15px;
+}
+#skin a{
+    cursor: pointer;
+    display: block;
+    width: 15px;
+    height: 15px;
+}
+#skin1 {
+    background-image: url(../imgs/theme.gif);
+}
+#skin2 {
+    background-image: url(../imgs/theme.gif);
+    background-position: -20px 0px;
+}
+#skin3 {
+    background-image: url(../imgs/theme.gif);
+    background-position: -40px 0px;
+}
+#skin4 {
+    background-image: url(../imgs/theme.gif);
+    background-position: -60px 0px;
+}
+#skin5 {
+    background-image: url(../imgs/theme.gif);
+    background-position: -80px 0px;
+}
+#skin6 {
+    background-image: url(../imgs/theme.gif);
+    background-position: -100px 0px;
+}
+/*下面为隐藏菜单*/
+.submenu{
+    position: fixed;
+    top: 105px;
+    left: 245px;
+    width: 420px;
+    height: 110px;
+    background: #aaaaaa;
+    display: none;
+}
+.titleup{
+    position: absolute;
+    left: 20px;
+    float: left;
+}
+#nav .sublistup li,#nav .sublistdown li {
+    border-right: 1px black solid;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    margin-left: 0px;
+    padding: 0px 10px;
+}
+ div.sublistup{
+    width: 333px;
+    height: 50px;
+    position: absolute;
+    top: 5px;
+    left: 80px;
+}
+.titledown{
+    position: absolute;
+    left: 20px;
+    float: left;
+    top: 50px;
+}
+ div.sublistdown{
+    width: 333px;
+    height: 50px;
+    position: absolute;
+    top: 55px;
+    left: 80px;
+}
+.menu:hover .submenu{
+    display: block;
+}
+.submenu1{
+    position: fixed;
+    top: 105px;
+    left: 290px;
+    width: 420px;
+    height: 110px;
+    background: #aaaaaa;
+    display: none;
+}
+.menu:hover .submenu1{
+    display: block;
+}
+.submenu2{
+    position: fixed;
+    top: 105px;
+    left: 330px;
+    width: 420px;
+    height: 110px;
+    background: #aaaaaa;
+    display: none;
+}
+.menu:hover .submenu2{
+    display: block;
+}
+/*以上为header部分结束*/
+#content{
+    width: 990px;
+    height: 560px;
+    margin: 0px auto;
+    position: relative;
+    padding: 10px 0px;
+}
+#list{
+    width: 186px;
+    height: 560px;
+    border: 1px solid black;
+    float: left;
+    margin-right: 10px;
+}
+#list li{
+    float: left;
+    height: 24px;
+    width: 79px;
+    margin-left: 14px;
+    font-size: 12px;
+}
+#list h3,h4{
+    width: 186px;
+    float: left;
+}
+#list h3{
+    height: 30px;
+    color: #ffffff;
+    line-height: 30px;
+    background: #4a4a4a;
+    text-indent: 15px;
+}
+#list h4{
+    margin-top: 5px;
+    height: 25px;
+    line-height: 25px;
+    text-indent: 15px;
+    border-bottom: dashed 1px #CCCCCC;
+    margin-bottom: 5px;
+}
+#list a{
+    color: black;
+}
+/*以上为左侧菜单部分*/
+#centerpic{
+    width: 550px;
+    height: 321px;
+    background: #CCCCCC;
+    float: left;
+    margin-right: 10px;
+    position: relative;
+}
+#centerpic li{
+    float: left;
+    width: 109px;
+    height: 42px;
+    line-height: 42px;
+    text-align: center;
+    margin-right: 1px;
+    background: #666666;
+    opacity: 0.6;
+}
+#centerpic a{
+    color: white;
+    font-size: 12px;
+}
+#centerpic ul{
+    position: absolute;
+    bottom: 0px;
+}
+#centerpic .selected{
+    background: #37A7E7;
+    opacity: 0.8;
+}
+#centerpic img{
+    display: none;
+}
+#centerpic .selected1{
+    display: block;
+}
+/*以上为轮播图部分*/
+#festvial{
+    width: 230px;
+    height: 176px;
+    float: left;
+}
+/*以上为皮鞋节部分*/
+#news{
+    margin-top: 10px;
+    width: 230px;
+    height: 135px;
+    float: left;
+    border: 1px solid #CCCCCC;
+}
+#news li{
+    font-size: 12px;
+    margin-top: 8px;
+    margin-left: 8px;
+}
+#news h4{
+    width: 230px;
+    border-bottom: solid 1px #CCCCCC;
+    font-size: 16px;
+    text-indent: 10px;
+    padding: 5px 0px;
+}
+#news a{
+    color: #4a4a4a;
+}
+/*以上为最新动态部分*/
+#shoes{
+    margin-top: 10px;
+    width: 792px;
+    height: 230px;
+    float: left;
+    overflow: hidden;
+    position: relative;
+}
+#shoes h4{
+    width: 590px;
+    line-height: 31px;
+    text-indent: 15px;
+}
+#shoes li{
+    float: left;
+    height: 31px;
+    margin-bottom: 5px;
+    text-align: center;
+    line-height: 31px;
+    margin-right: 5px;
+}
+#shoebar{
+    width: 3200px;
+    height: 180px;
+    float: left;
+    padding-top: 3px;
+    position: absolute;
+    left: 0px;
+    top: 36px;
+}
+#shoebar img{
+    margin-left: 7px;
+}
+#shoebar a{
+    float: left;
+    display: block;
+    width: 171.5px;
+    margin-left: 14px;
+    text-align: center;
+    background: #DDDDDD;
+    color: #4a4a4a;
+}
+#shoes .selected2 a{
+    background: #C8458F;
+    color: white;
+}
+#shoes a{
+    color: black;
+    padding: 5px;
+}
+/*以上为选项卡部分*/
+#footer{
+    margin: 0 auto;
+    width: 990px;
+    text-align: center;
+    padding: 18px;
+    font-size: 14px;
+    color: #4a4a4a;
+
+}
