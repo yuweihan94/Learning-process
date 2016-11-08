@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        li{
+            float: left;
+            width: 16px;
+            height: 16px;
+        }
+        a{
+            display: block;
+            height: 16px;
+            width: 16px;
+        }
+        #box{
+            background-image: url(1.gif);
+            width: 80px;
+            height: 16px;
+        }
+        .six{
+            background-position: 0px -16px;
+        }
+        .seven{
+            background-position: 0px -32px;
+        }
+        .eight{
+            background-position: 0px -48px;
+        }
+        .nine{
+            background-position: 0px -64px;
+        }
+        .ten{
+            background-position: 0px -80px;
+        }
+        .one{
+            background-position: 0px -96px;
+        }
+        .two{
+            background-position: 0px -112px;
+        }
+        .three{
+            background-position: 0px -128px;
+        }
+        .four{
+            background-position: 0px -144px;
+        }
+        .five{
+            background-position: 0px -160px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul>
+        <li><a href="#" id="one"></a></li>
+        <li><a href="#" id="two"></a></li>
+        <li><a href="#" id="three"></a></li>
+        <li><a href="#" id="four"></a></li>
+        <li><a href="#" id="five"></a></li>
+    </ul>
+</div>
+<script src="jquery-1.12.4.js"></script>
+<script>
+    $(function(){
+       $('#one').on('mouseover',function(){
+           $('#box').addClass('one');
+       }).on('mouseout',function(){
+           $('#box').removeClass('one');
+       }).on('click',function(){
+           alert('你给的是1分');
+           $('#box').addClass('six').removeClass('seven').removeClass('eight').removeClass('nine').removeClass('ten');
+       });
+        $('#two').on('mouseover',function(){
+            $('#box').addClass('two');
+        }).on('mouseout',function(){
+            $('#box').removeClass('two');
+        }).on('click',function(){
+            alert('你给的是2分');
+            $('#box').addClass('seven').removeClass('six').removeClass('eight').removeClass('nine').removeClass('ten');
+        });
+        $('#three').on('mouseover',function(){
+            $('#box').addClass('three');
+        }).on('mouseout',function(){
+            $('#box').removeClass('three');
+        }).on('click',function(){
+            alert('你给的是3分');
+            $('#box').addClass('eight').removeClass('seven').removeClass('six').removeClass('nine').removeClass('ten');
+        });
+        $('#four').on('mouseover',function(){
+            $('#box').addClass('four');
+        }).on('mouseout',function(){
+            $('#box').removeClass('four');
+        }).on('click',function(){
+            alert('你给的是4分');
+            $('#box').addClass('nine').removeClass('seven').removeClass('eight').removeClass('six').removeClass('ten');
+        });
+        $('#five').on('mouseover',function(){
+            $('#box').addClass('five');
+        }).on('mouseout',function(){
+            $('#box').removeClass('five');
+        }).on('click',function(){
+            alert('你给的是5分');
+            $('#box').addClass('ten').removeClass('seven').removeClass('eight').removeClass('nine').removeClass('six');
+        });
+    });
+</script>
+</body>
+</html>
