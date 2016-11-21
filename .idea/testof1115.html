@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>3D骰子</title>
+    <style>
+        body{
+            -webkit-perspective:800px;
+
+        }
+        #box{
+            position: relative;
+            margin: 50px auto;
+            width: 400px;
+            height: 400px;
+            -webkit-transform-style: preserve-3d;
+            -webkit-animation: circ 3s linear 0s infinite;
+        }
+        @-webkit-keyframes circ{
+            0%{
+                -webkit-transform: rotate3d(45,45,0,0deg);
+            }
+            50%{
+                -webkit-transform: rotate3d(45,45,0,180deg);
+            }
+            100%{
+                -webkit-transform: rotate3d(45,45,0,360deg);
+            }
+        }
+        #box div{
+            width: 400px;
+            height: 400px;
+            background: #0090FF;
+            text-align: center;
+            line-height: 400px;
+            font-size: 50px;
+            position: absolute;
+            border: 1px solid black;
+            opacity: 0.6;
+        }
+        #six{
+            -webkit-transform: rotateX(90deg) translateZ(-200px);
+        }
+        #one{
+            -webkit-transform: rotateX(90deg) translateZ(200px);
+        }
+        #five{
+             -webkit-transform: rotateY(90deg) translateZ(200px);
+        }
+        #three{
+            -webkit-transform: rotateY(90deg) translateZ(-200px);
+        }
+        #two{
+            -webkit-transform: translateZ(-200px);
+        }
+        #four{
+            -webkit-transform: translateZ(200px);
+        }
+
+    </style>
+</head>
+<body>
+<div id="box">
+    <div id="one">1</div>
+    <div id="two">2</div>
+    <div id="three">3</div>
+    <div id="four">4</div>
+    <div id="five">5</div>
+    <div id="six">6</div>
+</div>
+</body>
+</html>

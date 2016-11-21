@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box{
+            width: 48px;
+            height: 48px;
+            position: absolute;
+            right: 30px;
+            top: 90%;
+        }
+        img{
+            border-radius: 50%;
+            position: absolute;
+        }
+        #menu{
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <img src="images/7.jpg" alt=""/>
+        <img src="images/2.jpg" alt=""/>
+        <img src="images/3.jpg" alt=""/>
+        <img src="images/4.jpg" alt=""/>
+        <img src="images/5.jpg" alt=""/>
+        <img src="images/6.jpg" alt="" id="menu"/>
+    </div>
+    <script>
+        var oBox = document.getElementById('box');
+        var aImg = oBox.getElementsByTagName('img');
+
+    </script>
+</body>
+</html>

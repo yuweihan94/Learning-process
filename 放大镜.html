@@ -72,11 +72,6 @@
             oDrag.style.display = 'block';
         };
         oMask.onmousemove = function(e){
-         /*   e = e ||window.event;
-            var iDisX = e.clientX - oDrag.offsetLeft / 2 ;
-            var iDisY = e.clientY - oDrag.offsetTop / 2 ;
-            oDrag.style.left = e.clientX -iDisX + 'px';
-            oDrag.style.top = e.clientY - iDisY + 'px';*/
             e = e || window.event;
             var iLeft = e.clientX - oDrag.offsetWidth / 2;
             var iTop = e.clientY - oDrag.offsetHeight / 2;

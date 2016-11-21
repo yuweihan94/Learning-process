@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            -webkit-perspective: 1000px;
+            -webkit-perspective-origin: center -100%;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+            position: relative;
+            -webkit-transform-style: preserve-3d;
+        }
+/*        #box:hover{
+            -webkit-animation: box 5s linear infinite;
+        }
+        @-webkit-keyframes box {
+            from{
+                -webkit-transform: rotateY(0deg);
+            }
+            to{
+                -webkit-transform: rotateY(360deg);
+            }
+        }*/
+        #box div{
+            width: 200px;
+            height: 200px;
+            background: #ccc;
+            font-size: 80px;
+            text-align: center;
+            line-height: 200px;
+            position: absolute;
+            border: 1px black solid;
+            opacity: .5;
+        }
+        .one{
+            -webkit-animation: one 1s ease forwards;
+        }
+        @-webkit-keyframes one{
+            from{
+                -webkit-transform: rotateY(0deg) translateZ(0px);
+            }
+            to{
+                -webkit-transform: rotateY(40deg) translateZ(300px);
+            }
+        }
+        .two{
+            -webkit-animation: two 1s ease 1s forwards;
+        }
+        @-webkit-keyframes two{
+            from{
+                -webkit-transform: rotateY(0deg) translateZ(0px);
+            }
+            to{
+                -webkit-transform: rotateY(80deg) translateZ(300px);
+            }
+        }
+        .thr{
+            -webkit-animation: thr 1s ease 2s forwards;
+        }
+        @-webkit-keyframes thr{
+            from{
+                -webkit-transform: rotateY(0deg) translateZ(0px);
+            }
+            to{
+                -webkit-transform: rotateY(120deg) translateZ(300px);
+            }
+        }
+        .four{
+            -webkit-animation: four 1s ease 3s forwards;
+        }
+        @-webkit-keyframes four{
+            from{
+                -webkit-transform: rotateY(0deg) translateZ(0px);
+            }
+            to{
+                -webkit-transform: rotateY(160deg) translateZ(300px);
+            }
+        }
+        .five{
+            -webkit-animation: five 1s ease 4s forwards;
+        }
+        @-webkit-keyframes five{
+            from{
+                -webkit-transform: rotateY(0deg) translateZ(0px);
+            }
+            to{
+                -webkit-transform: rotateY(200deg) translateZ(300px);
+            }
+        }
+        .six{
+            -webkit-animation: six 1s ease 5s forwards;
+        }
+        @-webkit-keyframes six{
+            from{
+                -webkit-transform: rotateY(0deg) translateZ(0px);
+            }
+            to{
+                -webkit-transform: rotateY(240deg) translateZ(300px);
+            }
+        }
+        .seven{
+            -webkit-animation: seven 1s ease 6s forwards;
+        }
+        @-webkit-keyframes seven{
+            from{
+                -webkit-transform: rotateY(0deg) translateZ(0px);
+            }
+            to{
+                -webkit-transform: rotateY(280deg) translateZ(300px);
+            }
+        }
+        .eight{
+            -webkit-animation: eight 1s ease 7s forwards;
+        }
+        @-webkit-keyframes eight{
+            from{
+                -webkit-transform: rotateY(0deg) translateZ(0px);
+            }
+            to{
+                -webkit-transform: rotateY(320deg) translateZ(300px);
+            }
+        }
+        .nine{
+            -webkit-animation: nine 1s ease 8s forwards;
+        }
+        @-webkit-keyframes nine{
+            from{
+                -webkit-transform: rotateY(0deg) translateZ(0px);
+            }
+            to{
+                -webkit-transform: rotateY(360deg) translateZ(300px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div class="one">1</div>
+        <div class="two">2</div>
+        <div class="thr">3</div>
+        <div class="four">4</div>
+        <div class="five">5</div>
+        <div class="six">6</div>
+        <div class="seven">7</div>
+        <div class="eight">8</div>
+        <div class="nine">9</div>
+    </div>
+    <script>
+        var oBox = document.getElementById('box');
+        var index = 0
+        oBox.onclick = function(e){
+            index++;
+            oBox.style.webkitTransform ='rotateY('+index*40+'deg)';
+            console.log(index)
+        }
+    </script>
+</body>
+</html>

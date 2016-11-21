@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            -webkit-perspective: 1000px;
+            -webkit-perspective-origin: center -100%;
+        }
+        #container{
+            width: 200px;
+            height: 200px;
+            position: relative;
+            border: 1px solid black;
+            margin: 200px auto;
+            -webkit-transform-style: preserve-3d;
+            -webkit-transition: -webkit-transform 1s;
+        }
+        #container div{
+            width: 200px;
+            height: 200px;
+            background: #17ade0;
+            position: absolute;
+            text-align: center;
+            line-height: 200px;
+            font-size: 80px;
+            opacity: .5;
+
+        }
+    </style>
+</head>
+<body>
+        <div id="container">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div>7</div>
+            <div>8</div>
+            <div>9</div>
+        </div>
+    <script>
+        console.log('dddddddddddddddd');
+        var oContainer = document.getElementById('container');
+        var aImg = oContainer.getElementsByTagName('div');
+        var index =0;
+        var i=8;
+        for(var i= 0;i<aImg.length;i++){
+            (function(index){
+                setTimeout(function(){
+                    aImg[index].style.webkitTransform ="rotateY("+index*40+"deg) translateZ(280px)";
+                    aImg[index].style.webkitTransition= 'transform 2s ease';
+                },100*(9-index))
+            })(i);
+        }
+        /*var time=setInterval(function(){
+            aImg[i].style.webkitTransform ="rotateY("+i*40+"deg) translateZ(280px)";
+            aImg[i].style.webkitTransition= 'transform 2s ease';
+            i--;
+            if(i==-1){
+                clearInterval(time)
+            }
+        },100);*/
+        oContainer.onclick = function(){
+            index++;
+            oContainer.style.webkitTransform ='rotateY('+index*40+'deg)';
+            console.log(index)
+        }
+    </script>
+</body>
+</html>

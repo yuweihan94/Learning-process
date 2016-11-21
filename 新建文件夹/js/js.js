@@ -46,22 +46,23 @@ $(function(){
     //换肤功能实现
     $('#centerpic li').on('mouseenter',function(){
         $(this).addClass('selected').siblings().removeClass('selected');
-        $('#pic img:eq('+$(this).index()+')').show().siblings().hide();
-        clearInterval(time)
-    }).on('mouseleave',function(){
-       timer();
+        $('#pic img:eq('+$(this).index()+')').addClass('selected1').siblings().removeClass('selected1');
+    });
+    $('#centerpic').hover(function(){
+        clearInterval(time);
+    },function(){
+        timer();
     });
     var time;
     iNow = 0;
     function timer(){
         time=setInterval(function(){
-            if(iNow ==4){
-                iNow = -1;
+            iNow++;
+            if(iNow ==$('#centerpic img').size()){
+                iNow = 0;
             }
-            var index = iNow++;
-            $('#centerpic li').eq(index).addClass('selected').siblings().removeClass('selected');
-            $('#centerpic img').eq(index).addClass('selected1').siblings().removeClass('selected1');
-
+            $('#centerpic li').eq(iNow).addClass('selected').siblings().removeClass('selected');
+            $('#centerpic img').eq(iNow).addClass('selected1').siblings().removeClass('selected1');
         },2020)
     }
    timer();
