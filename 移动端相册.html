@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #container li{
+            float: left;
+            margin-right: 2px;
+            margin-bottom: 2px;
+        }
+        #container li img{
+            width: 100%;
+            height: 100%;
+        }
+        #container li:nth-child(4n){
+            margin-right: 0;
+        }
+        body{
+            background: #000;
+        }
+        #bigImg{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <ul id="container"></ul>
+    <div id="bigImg"></div>
+    <script src="zepto.min.js"></script>
+    <script>
+        $(function(){
+            var $container = $('#container');
+            var $bigImg = $('#bigImg');
+            var html = '';
+            var $iNow = 0;
+            for(var i=0; i<24; i++){
+                html = $("<li><img src='img/img/"+(i+1)+".jpg'/></li>");
+                html.css({
+                    width: ($(document.body).width()-6)/4,
+                    height: ($(document.body).width()-6)/4
+                });
+                $container.append(html);
+            }
+            $('li').on('singleTap',function(){
+                $iNow = $(this).index();
+                $('#container').hide();
+                $('#bigImg').css({
+                    background: "url(img/img/"+($iNow+1)+".jpg) center no-repeat",
+                    backgroundSize: 'contain'
+                }).show();
+            });
+            $bigImg.on('swipeRight',function(){
+                $iNow++;
+                if($iNow == 24){
+                    $iNow = 0
+                }
+                $('#bigImg').css({
+                    background: "url(img/img/"+($iNow+1)+".jpg) center no-repeat",
+                    backgroundSize: 'contain'
+                })
+            }).on('swipeLeft',function(){
+                $iNow--;
+                if($iNow == 24){
+                    $iNow = 0
+                }
+                $('#bigImg').css({
+                    background: "url(img/img/"+($iNow+1)+".jpg) center no-repeat",
+                    backgroundSize: 'contain'
+                }).on('tap',function(){
+                    $('#bigImg').hide();
+                    $('#container').show();
+                })
+            })
+        })
+    </script>
+</body>
+</html>
