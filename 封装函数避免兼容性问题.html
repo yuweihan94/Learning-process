@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul>
+    <li class="a">111</li>
+    <li>222</li>
+    <li class="a">333</li>
+</ul>
+<script>
+    function getClassName(clsName,context){
+        context = context || document;
+        if(document.getElementsByClassName){
+            return context.getElementsByClassName(clsName);
+        }else{
+            var arr = [];
+            var all = context.getElementsByTagName('*');
+            var reg = new RegExp('\\b'+clsName+'\\b');
+            for(var i=0; i<all.length; i++){
+                if(reg.test(all[i].className)){
+                    arr.push(all[i]);
+                }
+            }
+            return arr;
+        }
+    }
+    console.log(getClassName('a'));
+    getClassName('a')[1].style.background = 'red';
+</script>
+</body>
+</html>
